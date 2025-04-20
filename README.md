@@ -95,7 +95,7 @@ class Lamp(Device):
 ### Example
 This example will create a hub with a device called "Lamp" and print the state changes to the console.
 ```python
-mport asyncio
+import asyncio
 from echohue import Hub, Device
 
 class Lamp(Device):
