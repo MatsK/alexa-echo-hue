@@ -95,7 +95,7 @@ class Lamp(Device):
 ### Example
 This example will create a hub with a device called "Lamp" and print the state changes to the console.
 ```python
-import asyncio
+mport asyncio
 from echohue import Hub, Device
 
 class Lamp(Device):
@@ -103,14 +103,33 @@ class Lamp(Device):
         super().__init__(name, on, brightness)
 
     async def on_on(self):
+        print('')
         print('Lamp turned on')
+        print('\a')                 # Bell sound to indicate a change 
     async def on_off(self):
+        print('')
         print('Lamp turned off')
+        print('\a')                 # Bell sound to indicate a change
     async def on_bri(self, bri):
+        print('')
         print(f'Lamp brightness changed to {bri}')
+        print('\a')                 # Bell sound to indicate a change
+    async def on_xy(self, tup):
+        print('')
+        print(f'Lamp color changed to {tup}')
+        print('\a')                 # Bell sound to indicate a change
+    async def on_hue(self, hue):
+        print('')
+        print(f'Lamp hue changed to {hue}')
+        print('\a')                 # Bell sound to indicate a change
+    async def on_sat(self, sat):
+        print('')
+        print(f'Lamp sat changed to {sat}')
 
 async def main():
+
     async with Hub() as hub:
+        print('Initialise "Test Device".')
         hub.add(Lamp('Test Device'))
         await hub.run()
 
